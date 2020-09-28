@@ -1,5 +1,4 @@
 # Packages ----------------------------------------------------------------
-
 require(EpiNow2)
 require(covidregionaldata)
 require(data.table)
@@ -10,17 +9,14 @@ require(lubridate)
 generation_time <- get_generation_time(disease = "SARS-CoV-2", source = "ganyani")
 incubation_period <- get_incubation_period(disease = "SARS-CoV-2", source = "lauer")
 
-
 saveRDS(generation_time , here::here("data", "generation_time.rds"))
 saveRDS(incubation_period, here::here("data", "incubation_period.rds"))
-
 
 # Set up parallel ---------------------------------------------------------
 if (!interactive()) {
   ## If running as a script enable this
   options(future.fork.enable = TRUE)
 }
-
 
 plan(multiprocess)
 
